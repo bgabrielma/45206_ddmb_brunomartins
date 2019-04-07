@@ -17,7 +17,7 @@ import UIKit
  *
  */
 
-var mecanismoJogo:[[String]] = [["pedra", "tesoura"], ["papel", "pedra"], ["tesoura", "papel"]]
+let mecanismoJogo:[[String]] = [["pedra", "tesoura"], ["papel", "pedra"], ["tesoura", "papel"]]
 let opcoes:[String] = ["pedra", "papel", "tesoura"]
 
 let escolhaMaquina = opcoes[1]

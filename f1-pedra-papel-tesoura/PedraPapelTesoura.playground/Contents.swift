@@ -20,7 +20,7 @@ import UIKit
 let mecanismoJogo:[[String]] = [["pedra", "tesoura"], ["papel", "pedra"], ["tesoura", "papel"]]
 let opcoes:[String] = ["pedra", "papel", "tesoura"]
 
-let escolhaMaquina = opcoes[1]
+let escolhaMaquina = opcoes[Int.random(in: 0...2)]
 let escolhaUser = opcoes[0]
 
 

@@ -40,6 +40,6 @@ for mecanismo in mecanismoJogo where escolhaUser != escolhaMaquina {
     }
     else {
         print("O Utilizador ganha!")
-        break;
+        break
     }
 }

@@ -34,8 +34,8 @@ import UIKit
 let mecanismoJogo:[[String]] = [["pedra", "tesoura"], ["papel", "pedra"], ["tesoura", "papel"]]
 let opcoes:[String] = ["pedra", "papel", "tesoura"]
 
-let escolhaUser = Int(arc4random_uniform(2))
-let escolhaMaquina = Int(arc4random_uniform(2))
+let escolhaUser =  2
+let escolhaMaquina = 0
 
 print("O Utilizador escolhe: \(opcoes[escolhaUser])")
 print ("A Máquina escolhe: \(opcoes[escolhaMaquina])")
@@ -43,7 +43,7 @@ print ("A Máquina escolhe: \(opcoes[escolhaMaquina])")
 print("\n-----Resultado-----")
 
 if escolhaUser != escolhaMaquina  {
-    print("Vencedor: \(mecanismoJogo[escolhaMaquina][1] == opcoes[escolhaUser] ? "Máquina" :  "Utilizador")")
+    print("Vencedor: \(mecanismoJogo[escolhaUser][1] == opcoes[escolhaMaquina] ? "Utilizador" :  "Máquina")")
 } else {
     print("Empate")
 }

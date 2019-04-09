@@ -34,8 +34,8 @@ import UIKit
 let mecanismoJogo:[[String]] = [["pedra", "tesoura"], ["papel", "pedra"], ["tesoura", "papel"]]
 let opcoes:[String] = ["pedra", "papel", "tesoura"]
 
-let escolhaUser =  2
-let escolhaMaquina = 0
+let escolhaUser = Int(arc4random_uniform(2))
+let escolhaMaquina = Int(arc4random_uniform(2))
 
 print("O Utilizador escolhe: \(opcoes[escolhaUser])")
 print ("A Máquina escolhe: \(opcoes[escolhaMaquina])")

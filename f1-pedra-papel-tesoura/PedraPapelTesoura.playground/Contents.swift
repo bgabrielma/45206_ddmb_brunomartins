@@ -26,8 +26,8 @@ import UIKit
  *  Ou seja, se eu quiser saber o atributo que perde contra a pedra, basta fazer: array[0][1].
  *
  *
- *  Se eu quiser saber se tesoura gamhaa pedra s
- *      se array[2][0] == pedra. Como é falso, tesoura perde contra pedra
+ *  Se eu quiser saber se tesoura ganha contra pedra:
+ *      se array[2][1] == pedra. Como é falso, tesoura perde contra pedra
  *
  */
 

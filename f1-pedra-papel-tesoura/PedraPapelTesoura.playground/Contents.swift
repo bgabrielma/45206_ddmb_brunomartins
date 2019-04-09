@@ -17,22 +17,33 @@ import UIKit
 // Funcionamento:
 //
 /*
- *       [Atributo] |    Pedra   |   Papel   |   Tesoura
- *   ---------------|-----------------------------------
- *   [Ganha a quem?] |    Tesoura |   Pedra   |   Papel
+ *       [Atributo]  |    Pedra    [0] [0] |   Papel [1] [0]   |   Tesoura [2] [0]
+ *   --------------- |---------------------|-------------------|--------------------
+ *   [Ganha a quem?] |    Tesoura [0] [1]  |   Pedra [1] [1]   |   Papel   [2] [1]
+ *
+ *
+ *
+ *  Ou seja, se eu quiser saber o atributo que perde contra a pedra, basta fazer: array[0][1].
+ *
+ *
+ *  Se eu quiser saber se tesoura gamhaa pedra s
+ *      se array[2][0] == pedra. Como é falso, tesoura perde contra pedra
  *
  */
 
 let mecanismoJogo:[[String]] = [["pedra", "tesoura"], ["papel", "pedra"], ["tesoura", "papel"]]
 let opcoes:[String] = ["pedra", "papel", "tesoura"]
 
-let escolhaMaquina = Int.random(in: 0...2)
-let escolhaUser = Int.random(in: 0...2)
+let escolhaUser = Int(arc4random_uniform(2))
+let escolhaMaquina = Int(arc4random_uniform(2))
 
-
-print("O utilizador escolhe: \(opcoes[escolhaUser])")
-print ("A máquina escolhe: \(opcoes[escolhaMaquina])")
+print("O Utilizador escolhe: \(opcoes[escolhaUser])")
+print ("A Máquina escolhe: \(opcoes[escolhaMaquina])")
 
 print("\n-----Resultado-----")
 
-print("Resultado:  \( (escolhaUser == escolhaMaquina)  ? "Empate" :  (mecanismoJogo[escolhaUser][0] == opcoes[escolhaMaquina]) ?  "Utilizador" : "Máquina")")
+if escolhaUser != escolhaMaquina  {
+    print("Vencedor: \(mecanismoJogo[escolhaMaquina][1] == opcoes[escolhaUser] ? "Máquina" :  "Utilizador")")
+} else {
+    print("Empate")
+}

@@ -7,7 +7,6 @@ import UIKit
 //
 //
 // brunonunes.martins@my.istec.pt - Bruno Martins - DDMB - 45206
-
 /*
  *
  * Caso Int.random não funcionar, usar -> Int(arc4random_uniform(2)
@@ -27,26 +26,13 @@ import UIKit
 let mecanismoJogo:[[String]] = [["pedra", "tesoura"], ["papel", "pedra"], ["tesoura", "papel"]]
 let opcoes:[String] = ["pedra", "papel", "tesoura"]
 
-let escolhaMaquina = opcoes[Int.random(in: 0...2)]
-let escolhaUser = opcoes[Int.random(in: 0...2)]
+let escolhaMaquina = Int.random(in: 0...2)
+let escolhaUser = Int.random(in: 0...2)
 
 
-print("O utilizador escolhe: \(escolhaUser)")
-print ("A máquina escolhe: \(escolhaMaquina)")
+print("O utilizador escolhe: \(opcoes[escolhaUser])")
+print ("A máquina escolhe: \(opcoes[escolhaMaquina])")
 
 print("\n-----Resultado-----")
-print("Empate: \(escolhaUser == escolhaMaquina ? "sim" : "não") \n")
 
-for mecanismo in mecanismoJogo where escolhaUser != escolhaMaquina {
-    guard mecanismo[0] == escolhaMaquina else {
-        continue
-    }
-    
-    if(mecanismo[1] == escolhaUser) {
-        print("A máquina ganha!")
-    }
-    else {
-        print("O Utilizador ganha!")
-        break
-    }
-}
+print("Resultado:  \( (escolhaUser == escolhaMaquina)  ? "Empate" :  (mecanismoJogo[escolhaUser][0] == opcoes[escolhaMaquina]) ?  "Utilizador" : "Máquina")")

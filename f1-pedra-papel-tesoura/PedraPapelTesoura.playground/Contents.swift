@@ -8,6 +8,13 @@ import UIKit
 //
 // brunonunes.martins@my.istec.pt - Bruno Martins - DDMB - 45206
 
+/*
+ *
+ * Caso Int.random não funcionar, usar -> Int(arc4random_uniform(2)
+ *
+ */
+
+
 // Funcionamento:
 //
 /*
@@ -21,7 +28,7 @@ let mecanismoJogo:[[String]] = [["pedra", "tesoura"], ["papel", "pedra"], ["teso
 let opcoes:[String] = ["pedra", "papel", "tesoura"]
 
 let escolhaMaquina = opcoes[Int.random(in: 0...2)]
-let escolhaUser = opcoes[0]
+let escolhaUser = opcoes[Int.random(in: 0...2)]
 
 
 print("O utilizador escolhe: \(escolhaUser)")

@@ -77,3 +77,21 @@ print("Propriedades comuns: \(bitoque.intersection(massaBolonhesa))")
 
 //Propriedades únicas (do 1 em relaçao ao 2 = subtracting else symmetricDifference)
 print("Propriedades únicas: \(bitoque.subtracting(massaBolonhesa))")
+
+// Exercicio 8
+
+let dictAluno:[Int:Int] = [45206 : 20, 45207 : 17, 45208 : 14, 45209 : 10, 45210 : 19]
+
+for a in dictAluno where a.value >= 17 {
+    print(a)
+}
+
+for a in dictAluno.keys {
+    print(a)
+}
+
+for a in dictAluno.values {
+    print(a)
+}
+
+

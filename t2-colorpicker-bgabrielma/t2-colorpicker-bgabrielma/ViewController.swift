@@ -10,11 +10,30 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    /**
+     *
+     * UI Components
+     *
+    **/
+    public var sliderR, sliderG, sliderB, sliderA : UISlider?
+    public var 	labelAreaRGBA, labelDescriptionRGBA : UILabel?
+    
+    // Interface options
+    public var padding = 50;
+    public var width = 0;
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.width = self.view.
+        
+        // Instance the components and render it to view, using view.subview
+        createAndRenderComp();
+        
     }
-
-
+    
+    public func createAndRenderComp() {
+    }
 }
 

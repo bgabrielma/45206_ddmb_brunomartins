@@ -3,29 +3,29 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		60B17B61228AC20B002C37D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B17B60228AC20B002C37D5 /* AppDelegate.swift */; };
-		60B17B63228AC20B002C37D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B17B62228AC20B002C37D5 /* ViewController.swift */; };
-		60B17B66228AC20B002C37D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60B17B64228AC20B002C37D5 /* Main.storyboard */; };
-		60B17B68228AC20B002C37D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60B17B67228AC20B002C37D5 /* Assets.xcassets */; };
-		60B17B6B228AC20B002C37D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60B17B69228AC20B002C37D5 /* LaunchScreen.storyboard */; };
+		60524D3D228AA2C8005378F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60524D3C228AA2C8005378F5 /* AppDelegate.swift */; };
+		60524D3F228AA2C8005378F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60524D3E228AA2C8005378F5 /* ViewController.swift */; };
+		60524D42228AA2C8005378F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60524D40228AA2C8005378F5 /* Main.storyboard */; };
+		60524D44228AA2C8005378F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60524D43228AA2C8005378F5 /* Assets.xcassets */; };
+		60524D47228AA2C8005378F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60524D45228AA2C8005378F5 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		60B17B5D228AC20B002C37D5 /* t2-colorpicker-bgabrielma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "t2-colorpicker-bgabrielma.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		60B17B60228AC20B002C37D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		60B17B62228AC20B002C37D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		60B17B65228AC20B002C37D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		60B17B67228AC20B002C37D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		60B17B6A228AC20B002C37D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		60B17B6C228AC20B002C37D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60524D39228AA2C7005378F5 /* items.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = items.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		60524D3C228AA2C8005378F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		60524D3E228AA2C8005378F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		60524D41228AA2C8005378F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		60524D43228AA2C8005378F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		60524D46228AA2C8005378F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		60524D48228AA2C8005378F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		60B17B5A228AC20B002C37D5 /* Frameworks */ = {
+		60524D36228AA2C7005378F5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -35,126 +35,127 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		60B17B54228AC20B002C37D5 = {
+		60524D30228AA2C7005378F5 = {
 			isa = PBXGroup;
 			children = (
-				60B17B5F228AC20B002C37D5 /* t2-colorpicker-bgabrielma */,
-				60B17B5E228AC20B002C37D5 /* Products */,
+				60524D3B228AA2C7005378F5 /* items */,
+				60524D3A228AA2C7005378F5 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		60B17B5E228AC20B002C37D5 /* Products */ = {
+		60524D3A228AA2C7005378F5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				60B17B5D228AC20B002C37D5 /* t2-colorpicker-bgabrielma.app */,
+				60524D39228AA2C7005378F5 /* items.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		60B17B5F228AC20B002C37D5 /* t2-colorpicker-bgabrielma */ = {
+		60524D3B228AA2C7005378F5 /* items */ = {
 			isa = PBXGroup;
 			children = (
-				60B17B60228AC20B002C37D5 /* AppDelegate.swift */,
-				60B17B62228AC20B002C37D5 /* ViewController.swift */,
-				60B17B64228AC20B002C37D5 /* Main.storyboard */,
-				60B17B67228AC20B002C37D5 /* Assets.xcassets */,
-				60B17B69228AC20B002C37D5 /* LaunchScreen.storyboard */,
-				60B17B6C228AC20B002C37D5 /* Info.plist */,
+				60524D3C228AA2C8005378F5 /* AppDelegate.swift */,
+				60524D3E228AA2C8005378F5 /* ViewController.swift */,
+				60524D40228AA2C8005378F5 /* Main.storyboard */,
+				60524D43228AA2C8005378F5 /* Assets.xcassets */,
+				60524D45228AA2C8005378F5 /* LaunchScreen.storyboard */,
+				60524D48228AA2C8005378F5 /* Info.plist */,
 			);
-			path = "t2-colorpicker-bgabrielma";
+			path = items;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		60B17B5C228AC20B002C37D5 /* t2-colorpicker-bgabrielma */ = {
+		60524D38228AA2C7005378F5 /* items */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 60B17B6F228AC20B002C37D5 /* Build configuration list for PBXNativeTarget "t2-colorpicker-bgabrielma" */;
+			buildConfigurationList = 60524D4B228AA2C8005378F5 /* Build configuration list for PBXNativeTarget "items" */;
 			buildPhases = (
-				60B17B59228AC20B002C37D5 /* Sources */,
-				60B17B5A228AC20B002C37D5 /* Frameworks */,
-				60B17B5B228AC20B002C37D5 /* Resources */,
+				60524D35228AA2C7005378F5 /* Sources */,
+				60524D36228AA2C7005378F5 /* Frameworks */,
+				60524D37228AA2C7005378F5 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "t2-colorpicker-bgabrielma";
-			productName = "t2-colorpicker-bgabrielma";
-			productReference = 60B17B5D228AC20B002C37D5 /* t2-colorpicker-bgabrielma.app */;
+			name = items;
+			productName = items;
+			productReference = 60524D39228AA2C7005378F5 /* items.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		60B17B55228AC20B002C37D5 /* Project object */ = {
+		60524D31228AA2C7005378F5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = ISTEC;
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = swift;
 				TargetAttributes = {
-					60B17B5C228AC20B002C37D5 = {
-						CreatedOnToolsVersion = 10.1;
+					60524D38228AA2C7005378F5 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 60B17B58228AC20B002C37D5 /* Build configuration list for PBXProject "t2-colorpicker-bgabrielma" */;
-			compatibilityVersion = "Xcode 9.3";
+			buildConfigurationList = 60524D34228AA2C7005378F5 /* Build configuration list for PBXProject "items" */;
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 60B17B54228AC20B002C37D5;
-			productRefGroup = 60B17B5E228AC20B002C37D5 /* Products */;
+			mainGroup = 60524D30228AA2C7005378F5;
+			productRefGroup = 60524D3A228AA2C7005378F5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				60B17B5C228AC20B002C37D5 /* t2-colorpicker-bgabrielma */,
+				60524D38228AA2C7005378F5 /* items */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		60B17B5B228AC20B002C37D5 /* Resources */ = {
+		60524D37228AA2C7005378F5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60B17B6B228AC20B002C37D5 /* LaunchScreen.storyboard in Resources */,
-				60B17B68228AC20B002C37D5 /* Assets.xcassets in Resources */,
-				60B17B66228AC20B002C37D5 /* Main.storyboard in Resources */,
+				60524D47228AA2C8005378F5 /* LaunchScreen.storyboard in Resources */,
+				60524D44228AA2C8005378F5 /* Assets.xcassets in Resources */,
+				60524D42228AA2C8005378F5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		60B17B59228AC20B002C37D5 /* Sources */ = {
+		60524D35228AA2C7005378F5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60B17B63228AC20B002C37D5 /* ViewController.swift in Sources */,
-				60B17B61228AC20B002C37D5 /* AppDelegate.swift in Sources */,
+				60524D3F228AA2C8005378F5 /* ViewController.swift in Sources */,
+				60524D3D228AA2C8005378F5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		60B17B64228AC20B002C37D5 /* Main.storyboard */ = {
+		60524D40228AA2C8005378F5 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				60B17B65228AC20B002C37D5 /* Base */,
+				60524D41228AA2C8005378F5 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		60B17B69228AC20B002C37D5 /* LaunchScreen.storyboard */ = {
+		60524D45228AA2C8005378F5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				60B17B6A228AC20B002C37D5 /* Base */,
+				60524D46228AA2C8005378F5 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -162,7 +163,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		60B17B6D228AC20B002C37D5 /* Debug */ = {
+		60524D49228AA2C8005378F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -172,12 +173,10 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -185,7 +184,6 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -213,9 +211,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -223,7 +220,7 @@
 			};
 			name = Debug;
 		};
-		60B17B6E228AC20B002C37D5 /* Release */ = {
+		60524D4A228AA2C8005378F5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -233,12 +230,10 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -246,7 +241,6 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -268,72 +262,64 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		60B17B70228AC20B002C37D5 /* Debug */ = {
+		60524D4C228AA2C8005378F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "t2-colorpicker-bgabrielma/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bgabrielma.t2-colorpicker-bgabrielma";
+				INFOPLIST_FILE = items/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = istec.items;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		60B17B71228AC20B002C37D5 /* Release */ = {
+		60524D4D228AA2C8005378F5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "t2-colorpicker-bgabrielma/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bgabrielma.t2-colorpicker-bgabrielma";
+				INFOPLIST_FILE = items/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = istec.items;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		60B17B58228AC20B002C37D5 /* Build configuration list for PBXProject "t2-colorpicker-bgabrielma" */ = {
+		60524D34228AA2C7005378F5 /* Build configuration list for PBXProject "items" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				60B17B6D228AC20B002C37D5 /* Debug */,
-				60B17B6E228AC20B002C37D5 /* Release */,
+				60524D49228AA2C8005378F5 /* Debug */,
+				60524D4A228AA2C8005378F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		60B17B6F228AC20B002C37D5 /* Build configuration list for PBXNativeTarget "t2-colorpicker-bgabrielma" */ = {
+		60524D4B228AA2C8005378F5 /* Build configuration list for PBXNativeTarget "items" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				60B17B70228AC20B002C37D5 /* Debug */,
-				60B17B71228AC20B002C37D5 /* Release */,
+				60524D4C228AA2C8005378F5 /* Debug */,
+				60524D4D228AA2C8005378F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 60B17B55228AC20B002C37D5 /* Project object */;
+	rootObject = 60524D31228AA2C7005378F5 /* Project object */;
 }

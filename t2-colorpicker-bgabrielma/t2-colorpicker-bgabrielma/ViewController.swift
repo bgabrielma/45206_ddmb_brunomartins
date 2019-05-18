@@ -42,36 +42,24 @@ class ViewController: UIViewController {
     public func createAndRenderComp() {
         
         //MARK: Labels
-        labelAreaRGBA = UILabel(frame: CGRect(x: (self.view.frame.width  - labelAreaRGBAValue) / 2,
-                                              y: 100,
-                                              width: labelAreaRGBAValue,
+        labelAreaRGBA = UILabel(frame: CGRect(x: (self.view.frame.width  - labelAreaRGBAValue) / 2, y: 100, width: labelAreaRGBAValue, 
                                               height: labelAreaRGBAValue))
+        
         labelAreaRGBA?.textAlignment = NSTextAlignment.center
         labelAreaRGBA?.backgroundColor = UIColor.gray
         
-        labelDescriptionRGBA = UILabel(frame: CGRect(x: labelDescriptionRGBAValue,
-                                                     y: 300,
-                                                     width: self.view.frame.width - (2 * labelDescriptionRGBAValue),
-                                                     height: labelDescriptionRGBAValue))
+        labelDescriptionRGBA = UILabel(frame: CGRect(x: labelDescriptionRGBAValue, y: 300, 
+                                              width: self.view.frame.width - (2 * labelDescriptionRGBAValue),
+                                              height: labelDescriptionRGBAValue))
         
         //MARK: Sliders
-        sliderR = UISlider(frame: CGRect(x: sliderValue,
-                                          y: CGFloat(baseYSlider + 50),
-                                          width: self.view.frame.width - (2 * sliderValue),
+        sliderR = UISlider(frame: CGRect(x: sliderValue, y: CGFloat(baseYSlider + 50),  width: self.view.frame.width - (2 * sliderValue),
                                           height: sliderValue))
-        
-        sliderG = UISlider(frame: CGRect(x: sliderValue,
-                                          y: CGFloat(baseYSlider + 100),
-                                          width: self.view.frame.width - (2 * sliderValue),
+        sliderG = UISlider(frame: CGRect(x: sliderValue, y: CGFloat(baseYSlider + 100), width: self.view.frame.width - (2 * sliderValue),
                                           height: sliderValue))
-        
-        sliderB = UISlider(frame: CGRect(x: sliderValue,
-                                          y: CGFloat(baseYSlider + 150),
-                                          width: self.view.frame.width - (2 * sliderValue),
+        sliderB = UISlider(frame: CGRect(x: sliderValue, y: CGFloat(baseYSlider + 150), width: self.view.frame.width - (2 * sliderValue),
                                           height: sliderValue))
-        sliderA = UISlider(frame: CGRect(x: sliderValue,
-                                          y: CGFloat(baseYSlider + 200),
-                                          width: self.view.frame.width - (2 * sliderValue),
+        sliderA = UISlider(frame: CGRect(x: sliderValue, y: CGFloat(baseYSlider + 200), width: self.view.frame.width - (2 * sliderValue),
                                           height: sliderValue))
         
         for x in 0..<arrSlider.count {
@@ -94,10 +82,7 @@ class ViewController: UIViewController {
     @objc
     func onChangeHandler() {
         // set Color with new instance
-        labelAreaRGBA?.backgroundColor = UIColor.init(red: CGFloat(sliderR!.value / 255),
-                                                      green: CGFloat(sliderG!.value / 255),
-                                                      blue: CGFloat(sliderB!.value / 255),
-                                                      alpha: CGFloat(sliderA!.value / 255))
+        labelAreaRGBA?.backgroundColor = UIColor.init(red: CGFloat(sliderR!.value / 255), green: CGFloat(sliderG!.value / 255), blue: CGFloat(sliderB!.value / 255), alpha: CGFloat(sliderA!.value / 255))
         
         //set RGBA label
         labelDescriptionRGBA?.text = "R: \(Int(sliderR!.value)) G: \(Int(sliderG!.value)) B: \(Int(sliderB!.value)) A: \(Int(sliderA!.value / 255))"

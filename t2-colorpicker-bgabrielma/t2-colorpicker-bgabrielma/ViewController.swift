@@ -23,13 +23,14 @@ class ViewController: UIViewController {
      * Array of UI in order to render in subview
      *
     **/
-    public lazy var arrUI:[UIView] = [labelAreaRGBA!, labelDescriptionRGBA!, sliderR!, sliderG!, sliderB!, sliderA!]
+    public lazy var arrSlider:[UISlider] = [sliderR!, sliderG!, sliderB!, sliderA!]
+    public lazy var arrUI:[UIView] = [labelAreaRGBA!, labelDescriptionRGBA!] + arrSlider
     
     // Interface options
     public var labelAreaRGBAValue:CGFloat = 180
     public var labelDescriptionRGBAValue:CGFloat = 50
     public var sliderValue:CGFloat = 30
-    public var width = 0
+    public var baseYSlider = 300
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,50 +50,45 @@ class ViewController: UIViewController {
         labelAreaRGBA?.backgroundColor = UIColor.gray
         
         labelDescriptionRGBA = UILabel(frame: CGRect(x: labelDescriptionRGBAValue,
-                                                     y: 350,
+                                                     y: 300,
                                                      width: self.view.frame.width - (2 * labelDescriptionRGBAValue),
                                                      height: labelDescriptionRGBAValue))
         
         //MARK: Sliders
         sliderR = UISlider(frame: CGRect(x: sliderValue,
-                                          y: 425,
+                                          y: CGFloat(baseYSlider + 50),
                                           width: self.view.frame.width - (2 * sliderValue),
                                           height: sliderValue))
         
         sliderG = UISlider(frame: CGRect(x: sliderValue,
-                                          y: 475,
+                                          y: CGFloat(baseYSlider + 100),
                                           width: self.view.frame.width - (2 * sliderValue),
                                           height: sliderValue))
         
         sliderB = UISlider(frame: CGRect(x: sliderValue,
-                                          y: 527,
+                                          y: CGFloat(baseYSlider + 150),
                                           width: self.view.frame.width - (2 * sliderValue),
                                           height: sliderValue))
         sliderA = UISlider(frame: CGRect(x: sliderValue,
-                                          y: 577,
+                                          y: CGFloat(baseYSlider + 200),
                                           width: self.view.frame.width - (2 * sliderValue),
                                           height: sliderValue))
         
-        // Set Maximum value and set alfa value to 255, in order to see inicial color
-        sliderR?.maximumValue = 255
-        sliderG?.maximumValue = 255
-        sliderB?.maximumValue = 255
-        sliderA?.maximumValue = 255
+        for x in 0..<arrSlider.count {
+            // Set Maximum value in order to see inicial color
+            arrSlider[x].maximumValue = 255
+            
+            //MARK: Events
+             arrSlider[x].addTarget(self, action: #selector(onChangeHandler), for: .valueChanged)
+        }
         
         // Set opacity to 1
         sliderA?.value = 255
-        
-        //MARK: Events
-        sliderR?.addTarget(self, action: #selector(onChangeHandler), for: .valueChanged)
-        sliderG?.addTarget(self, action: #selector(onChangeHandler), for: .valueChanged)
-        sliderB?.addTarget(self, action: #selector(onChangeHandler), for: .valueChanged)
-        sliderA?.addTarget(self, action: #selector(onChangeHandler), for: .valueChanged)
         
         // Render components
         for a in arrUI {
          self.view.addSubview(a)
         }
-        
     }
     
     @objc

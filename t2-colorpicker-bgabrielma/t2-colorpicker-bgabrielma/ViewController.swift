@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  t2-colorpicker-bgabrielma
 //
-//  Created by Aluno_Istec on 14/05/2019.
+//  Created by bnunes.martins@my.istec.pt - Bruno Martins on 14/05/2019.
 //  Copyright © 2019 ISTEC. All rights reserved.
 //
 

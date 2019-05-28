@@ -18,7 +18,7 @@ class pCell: UICollectionViewCell {
 
 class ViewController: UIViewController {
 
-    var cores:[[UIColor]] = [[.purple, .gray, .green, .red]]
+    var cores:[[UIColor]] = [[.purple, .gray, .green]]
     
     var fotos:[[String]] = [["foto1", "foto2", "foto3"]]
     
@@ -33,10 +33,10 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.cores.count
+       return fotos.count
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.cores[section].count
+        return fotos[section].count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

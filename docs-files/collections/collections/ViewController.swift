@@ -18,9 +18,9 @@ class pCell: UICollectionViewCell {
 
 class ViewController: UIViewController {
 
-    var cores:[[UIColor]] = [[.purple, .gray, .green, .red],[.purple, .gray, .green, .red]]
+    var cores:[[UIColor]] = [[.purple, .gray, .green, .red]]
     
-    var fotos:[[String]] = [["foto1", "foto2", "foto3"], ["foto1", "foto2", "foto3"]]
+    var fotos:[[String]] = [["foto1", "foto2", "foto3"]]
     
     @IBOutlet weak var img: UIImageView!
     
@@ -42,9 +42,8 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! pCell
-       
-        cell.backgroundColor = self.cores[indexPath.section][indexPath.row]
-        cell.img.image = UIImage(named: self.fotos[indexPath.section][indexPath.row])
+            cell.backgroundColor = self.cores[indexPath.section][indexPath.row]
+            cell.img.image = UIImage(named: self.fotos[indexPath.section][indexPath.row])
         
         return cell
     }

@@ -17,6 +17,7 @@
 		153EFC1622BC2C9D00DA0E5F /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EFC1522BC2C9D00DA0E5F /* Pokemon.swift */; };
 		153EFC1A22BC2D5100DA0E5F /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EFC1922BC2D5100DA0E5F /* Attack.swift */; };
 		15E06A1122BC39CF0057C7E3 /* DetailsPokemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E06A1022BC39CF0057C7E3 /* DetailsPokemonViewController.swift */; };
+		15FF8BAA22C0152B00870A66 /* PokemonCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FF8BA922C0152B00870A66 /* PokemonCellTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		153EFC1522BC2C9D00DA0E5F /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		153EFC1922BC2D5100DA0E5F /* Attack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
 		15E06A1022BC39CF0057C7E3 /* DetailsPokemonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPokemonViewController.swift; sourceTree = "<group>"; };
+		15FF8BA922C0152B00870A66 /* PokemonCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCellTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				153EFC1922BC2D5100DA0E5F /* Attack.swift */,
+				15FF8BA922C0152B00870A66 /* PokemonCellTableViewCell.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				153EFBD622BC216D00DA0E5F /* SecondViewController.swift in Sources */,
 				15E06A1122BC39CF0057C7E3 /* DetailsPokemonViewController.swift in Sources */,
 				153EFBD222BC216D00DA0E5F /* AppDelegate.swift in Sources */,
+				15FF8BAA22C0152B00870A66 /* PokemonCellTableViewCell.swift in Sources */,
 				153EFBD422BC216D00DA0E5F /* FirstViewController.swift in Sources */,
 				153EFC1A22BC2D5100DA0E5F /* Attack.swift in Sources */,
 			);

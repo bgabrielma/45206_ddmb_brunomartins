@@ -15,7 +15,15 @@ class PokemonCellTableViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.lblName.text = "Bulbassaur"
+        self.layer.cornerRadius = 10
+        self.backgroundColor = UIColor.gray
+        self.clipsToBounds = true
+        self.imgCell.contentMode = .scaleAspectFit
+        
+        self.lblName.font = UIFont.systemFont(ofSize: 12.0)
+        self.lblName.text = "Eeve"
+        self.lblName.backgroundColor = .yellow
+        self.lblName.tintColor = .white
     }
 
 }

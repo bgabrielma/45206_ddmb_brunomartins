@@ -13,6 +13,15 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        navigationItem.title = "Pokemon"
+        self.navigationController?.navigationBar.barTintColor = .orange
+        self.navigationController?.navigationBar.barStyle = .black
+        self.navigationController?.navigationBar.isTranslucent = false
+        
+        self.tabBarItem.badgeColor = .white
+        self.tabBarController?.tabBar.barTintColor = .orange
+        self.tabBarController?.tabBar.tintColor = .white
     }
 }
 

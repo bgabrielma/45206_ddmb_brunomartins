@@ -165,7 +165,9 @@
         <scene sceneID="ab5-EB-JP4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Idx-zz-5Ho" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" badgeValue="999" systemItem="search" id="Q8h-ym-FtG"/>
+                    <tabBarItem key="tabBarItem" title="" badgeValue="999" systemItem="search" id="Q8h-ym-FtG">
+                        <color key="badgeColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nBJ-Eo-XW0">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>

@@ -14,14 +14,13 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        navigationItem.title = "Pokemon"
-        self.navigationController?.navigationBar.barTintColor = .orange
-        self.navigationController?.navigationBar.barStyle = .black
-        self.navigationController?.navigationBar.isTranslucent = false
         
-        self.tabBarItem.badgeColor = .white
-        self.tabBarController?.tabBar.barTintColor = .orange
-        self.tabBarController?.tabBar.tintColor = .white
+        let customRed = UIColor.orange
+        
+        AppUtils.configureNavigation(view: self, navTitle: "Pokemon list - pokedex", barTint: customRed, color: UIColor.white, barStyle: UIBarStyle.black)
+        
+        AppUtils.configureTabBar(view: self, badgeColor: UIColor.white, barTintColor: customRed, tintColor: UIColor.white, unSelectedItemColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.6))
+        
     }
 }
 

@@ -15,6 +15,7 @@ class PokemonCellTableViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         self.layer.cornerRadius = 10
         self.backgroundColor = UIColor.gray
         self.clipsToBounds = true
@@ -24,6 +25,8 @@ class PokemonCellTableViewCell: UICollectionViewCell {
         self.lblName.text = "Eeve"
         self.lblName.backgroundColor = .yellow
         self.lblName.tintColor = .white
+        
+        print(type(of: self))
     }
 
 }

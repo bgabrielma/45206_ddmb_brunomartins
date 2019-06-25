@@ -7,14 +7,44 @@
 //
 
 import UIKit
+/*
+class FirstViewController: UIViewController,
+UINavigationControllerDelegate,
+UIImagePickerControllerDelegate {
 
-class FirstViewController: UIViewController {
-
+    @IBOutlet weak var myImageView: UIImageView!
+    var image = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
+    
+    @IBAction func importImage(_ sender: Any) {
+        image.delegate = self
+        image.sourceType = .photoLibrary
+        image.allowsEditing = false
+        self.present(image, animated: true)
+        {
+            // After it is complete
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let imagePicked = info[.originalImage] as? UIImage else {
+            return
+        }
+        
+        self.myImageView.image = imagePicked
+        self.dismiss(animated: true, completion: nil)
+    }
 }
+*/
+class FirstViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+
+
 

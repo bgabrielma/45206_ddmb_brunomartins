@@ -25,8 +25,6 @@ class PokemonCellTableViewCell: UICollectionViewCell {
         self.lblName.text = "Eeve"
         self.lblName.backgroundColor = .yellow
         self.lblName.tintColor = .white
-        
-        print(type(of: self))
     }
 
 }

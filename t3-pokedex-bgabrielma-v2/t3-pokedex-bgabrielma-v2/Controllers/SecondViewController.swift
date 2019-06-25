@@ -8,19 +8,49 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
-
+class SecondViewController: UIViewController, UISearchControllerDelegate {
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    let customRed = UIColor.orange
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        configTabBar()
+        configNavigation()
         
-        let customRed = UIColor.orange
         
+    }
+    
+    func configTabBar() {
+        AppUtils.configureTabBar(view: self, badgeColor: UIColor.white, barTintColor: customRed, tintColor: UIColor.white, unSelectedItemColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.6))
+    }
+    
+    func configNavigation() {
         AppUtils.configureNavigation(view: self, navTitle: "Pokemon list - pokedex", barTint: customRed, color: UIColor.white, barStyle: UIBarStyle.black)
         
-        AppUtils.configureTabBar(view: self, badgeColor: UIColor.white, barTintColor: customRed, tintColor: UIColor.white, unSelectedItemColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.6))
+        // Setup NavBar
+        let searchController = UISearchController(searchResultsController: nil)
         
+        searchController.searchBar.delegate = self
+        searchController.definesPresentationContext = true
+        searchController.searchBar.sizeToFit();
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+    }
+}
+
+extension SecondViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+        let cell = collectionView.visibleCells.last
+        if let indexPath = collectionView.indexPath(for: cell!)
+        {
+            collectionView.deleteItems(at: [indexPath])
+        }
+        self.collectionView.reloadData()
     }
 }
 

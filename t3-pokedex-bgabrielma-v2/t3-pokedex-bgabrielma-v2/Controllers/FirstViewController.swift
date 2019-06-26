@@ -43,6 +43,8 @@ UIImagePickerControllerDelegate {
 class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        AppUtils.configureTabBar(view: self, badgeColor: UIColor.white, barTintColor: AppUtils.primaryColor, tintColor: UIColor.white, unSelectedItemColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.6))
     }
 }
 

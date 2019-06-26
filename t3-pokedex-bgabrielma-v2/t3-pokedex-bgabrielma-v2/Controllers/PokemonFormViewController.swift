@@ -1,23 +1,18 @@
 //
-//  DetailsPokemonViewController.swift
+//  PokemonFormViewController.swift
 //  t3-pokedex-bgabrielma-v2
 //
-//  Created by Bruno Martins on 20/06/2019.
+//  Created by Bruno Martins on 26/06/2019.
 //  Copyright © 2019 Bruno Martins. All rights reserved.
 //
 
 import UIKit
 
-class DetailsPokemonViewController: UIViewController {
-    @IBOutlet weak var lbl: UILabel!
-    var data:String?
-    
-    // Pokemon props
-    var pokemonId:Int?
-    
+class PokemonFormViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.lbl.text = data!
+
         // Do any additional setup after loading the view.
     }
     

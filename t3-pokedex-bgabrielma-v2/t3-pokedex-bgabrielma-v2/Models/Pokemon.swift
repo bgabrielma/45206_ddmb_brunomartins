@@ -26,6 +26,10 @@ class Pokemon {
     private var _strengh:Int
     private var _evolutions:[Pokemon]
     private var _pathImage:String
+    private var _id:Int
+    
+    /* Counter */
+    private static var _count:Int = 0
     
     // With evolutions
     public init(_nome: String, _xp:Int, _hp:Int, _description:String,
@@ -43,7 +47,10 @@ class Pokemon {
         self._evolutions = _evolutions
         self._pathImage = _pathImage
         
-        Pokemon.count += 1
+        Pokemon._count += 1
+        
+        // set ID Pokemon
+        self._id = Pokemon._count
     }
     
     //Without evolutions
@@ -62,16 +69,21 @@ class Pokemon {
         self._pathImage = _pathImage
         
         self._evolutions = []
-        Pokemon.count += 1
+        Pokemon._count += 1
+        
+        // set ID Pokemon
+        self._id = Pokemon._count
     }
     
     // Other methods
     public func evolve() {}
     
-    // Encapsulate
+    // Counter all pokemons currently
+    public static func count() -> Int {
+        return Pokemon._count
+    }
     
-    /* Counter */
-    public static var count:Int = 0
+    // Encapsulate
     
     public var nome:String
     {
@@ -122,5 +134,8 @@ class Pokemon {
     {
         get { return self._pathImage }
         set { self._pathImage = newValue }
+    }
+    public var id:Int {
+        get { return self._id }
     }
 }

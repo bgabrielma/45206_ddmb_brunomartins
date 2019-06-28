@@ -7,42 +7,12 @@
 //
 
 import UIKit
-/*
-class FirstViewController: UIViewController,
-UINavigationControllerDelegate,
-UIImagePickerControllerDelegate {
 
-    @IBOutlet weak var myImageView: UIImageView!
-    var image = UIImagePickerController()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    @IBAction func importImage(_ sender: Any) {
-        image.delegate = self
-        image.sourceType = .photoLibrary
-        image.allowsEditing = false
-        self.present(image, animated: true)
-        {
-            // After it is complete
-        }
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        guard let imagePicked = info[.originalImage] as? UIImage else {
-            return
-        }
-        
-        self.myImageView.image = imagePicked
-        self.dismiss(animated: true, completion: nil)
-    }
-}
-*/
-class FirstViewController: UIViewController {
+class FirstViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var tableViewDataToBeInserted: UITableView!
     @IBOutlet weak var typePicker: UIPickerView!
+    @IBOutlet weak var imageViewPreview: UIImageView!
+    var imagePicker = UIImagePickerController()
     
     // Picker data for type and sub type
     var pickerData:[[EnumType]] = [EnumType.allCases, EnumType.allCases]
@@ -137,6 +107,29 @@ class FirstViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    
+    
+    @IBAction func uploadImage(_ sender: Any) {
+        self.imagePicker.delegate = self
+        self.imagePicker.sourceType = .photoLibrary
+        self.imagePicker.allowsEditing = false
+        self.present(self.imagePicker, animated: true)
+        {
+            // After it is complete
+        }
+    }
+}
+
+extension FirstViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let imagePicked = info[.originalImage] as? UIImage else {
+            return
+        }
+        
+        self.imageViewPreview.image = imagePicked
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 // Pickers

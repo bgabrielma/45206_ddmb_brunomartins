@@ -8,14 +8,46 @@
 
 import UIKit
 
+class ExampleData {
+    var nome:String?
+    var id:String?
+    
+    init(nome: String, id: String) {
+        self.nome = nome
+        self.id = id
+    }
+}
+
 class SecondViewController: UIViewController, UISearchControllerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     public let filterPokemons = [Pokemon]()
     
+    // Filter props
+    public var cellsExample:[ExampleData] = [ExampleData(nome: "Bulbassaur", id: "p1"), ExampleData(nome: "Charizard", id: "p2")]
+    public var filterCellsExample:[ExampleData] = [] {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
+    
+    public var filterText:String? {
+        didSet {
+            guard let text = self.filterText, text == "" else {
+                self.filterCellsExample = self.cellsExample.filter {elem in elem.nome!.lowercased().contains(self.filterText!.lowercased())}
+                return
+            }
+            // filterText != ""
+            self.filterCellsExample = self.cellsExample
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        // set filter cells example
+        self.filterCellsExample = self.cellsExample
         
         configTabBar()
         configNavigation()
@@ -49,6 +81,10 @@ extension SecondViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.collectionView.reloadData()
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.filterText = searchText
+    }
 }
 
 extension SecondViewController: UICollectionViewDataSource {
@@ -58,7 +94,7 @@ extension SecondViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         cell.lblName.font = UIFont.systemFont(ofSize: 12.0)
-        cell.lblName.text = "Ivassaur"
+        cell.lblName.text = filterCellsExample[indexPath.row].nome!
         cell.lblName.backgroundColor = AppUtils.primaryColor
         cell.imgCell.image = UIImage(named: "preview")
         
@@ -71,9 +107,7 @@ extension SecondViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        // mais um -> para acrescentar a célula de adicionar pokemon
-        return AppUtils.pokemons.count + 16
+        return filterCellsExample.count
     }
     
 }

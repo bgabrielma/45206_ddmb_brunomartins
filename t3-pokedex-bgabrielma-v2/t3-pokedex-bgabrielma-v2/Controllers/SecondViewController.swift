@@ -57,13 +57,10 @@ extension SecondViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? PokemonCellTableViewCell else {
             return UICollectionViewCell()
         }
-        
-        let isFirst = indexPath.row == 0
-        cell.lblName.font = UIFont.systemFont(ofSize: (isFirst) ? 13.0 : 12.0)
-        cell.lblName.text = (isFirst) ? "Adicionar" : "Ivassaur"
-        cell.lblName.backgroundColor = (isFirst) ? .black : AppUtils.primaryColor
-        cell.imgCell.image = UIImage(named: (isFirst) ? "add" : "example")
-        cell.mode = (isFirst) ? .Insert : .Read
+        cell.lblName.font = UIFont.systemFont(ofSize: 12.0)
+        cell.lblName.text = "Ivassaur"
+        cell.lblName.backgroundColor = AppUtils.primaryColor
+        cell.imgCell.image = UIImage(named: "preview")
         
         return cell
     }
@@ -84,14 +81,13 @@ extension SecondViewController: UICollectionViewDataSource {
 extension SecondViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let cell = collectionView.cellForItem(at: indexPath) as? PokemonCellTableViewCell
+        // let cell = collectionView.cellForItem(at: indexPath) as? PokemonCellTableViewCell
         
-        guard let detailsVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailsPokemonViewController") as? DetailsPokemonViewController,
-            let pokemonFormVC = self.storyboard?.instantiateViewController(withIdentifier: "PokemonFormViewController") else {
+        guard let detailsVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailsPokemonViewController") as? DetailsPokemonViewController else {
             return
         }
         
-        let viewToPush:UIViewController = (cell!.mode == .Read) ? detailsVC : pokemonFormVC
+        let viewToPush:UIViewController = detailsVC 
         
         detailsVC.data = "Cell row index: \(indexPath.row)"
         self.navigationController?.pushViewController(viewToPush, animated: true)

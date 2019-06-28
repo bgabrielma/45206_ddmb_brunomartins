@@ -28,3 +28,4 @@ enum EnumType: String, CaseIterable {
     case STEEL = "Steel"
     case FAIRY = "Fairy"
 }
+

@@ -21,11 +21,10 @@ class ExampleData {
 class SecondViewController: UIViewController, UISearchControllerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    public let filterPokemons = [Pokemon]()
     
     // Filter props
-    public var cellsExample:[ExampleData] = [ExampleData(nome: "Bulbassaur", id: "p1"), ExampleData(nome: "Charizard", id: "p2")]
-    public var filterCellsExample:[ExampleData] = [] {
+    public var cells:[Pokemon] = []
+    public var filterCells:[Pokemon] = [] {
         didSet {
             self.collectionView.reloadData()
         }
@@ -34,11 +33,11 @@ class SecondViewController: UIViewController, UISearchControllerDelegate {
     public var filterText:String? {
         didSet {
             guard let text = self.filterText, text == "" else {
-                self.filterCellsExample = self.cellsExample.filter {elem in elem.nome!.lowercased().contains(self.filterText!.lowercased())}
+                self.filterCells = self.cells.filter {elem in elem.nome.lowercased().contains(self.filterText!.lowercased())}
                 return
             }
             // filterText != ""
-            self.filterCellsExample = self.cellsExample
+            self.filterCells = self.cells
         }
     }
     
@@ -46,13 +45,18 @@ class SecondViewController: UIViewController, UISearchControllerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        // Get all pokemons
+        self.cells = AppUtils.pokemons
+        
         // set filter cells example
-        self.filterCellsExample = self.cellsExample
+        self.filterCells = self.cells
         
         configTabBar()
         configNavigation()
         setupSearchBar();
         
+        print("O meu valor atual em viewDidLoad: \(cells.count)")
+        print("O meu valor atual em viewDidLoad diretamente pela utils: \(AppUtils.pokemons.count)")
     }
     
     func configTabBar() {
@@ -94,9 +98,9 @@ extension SecondViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         cell.lblName.font = UIFont.systemFont(ofSize: 12.0)
-        cell.lblName.text = filterCellsExample[indexPath.row].nome!
+        cell.lblName.text = filterCells[indexPath.row].nome
         cell.lblName.backgroundColor = AppUtils.primaryColor
-        cell.imgCell.image = UIImage(named: "preview")
+        cell.imgCell.image = filterCells[indexPath.row].image
         
         return cell
     }
@@ -107,7 +111,9 @@ extension SecondViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filterCellsExample.count
+        
+        print("O meu valor atual em numberOfItemsInSection: \(cells.count)")
+        return filterCells.count
     }
     
 }

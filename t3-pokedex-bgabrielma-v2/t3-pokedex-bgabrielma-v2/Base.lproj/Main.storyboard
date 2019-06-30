@@ -45,7 +45,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y2G-7a-I8c">
+                            <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y2G-7a-I8c">
                                 <rect key="frame" x="22" y="243" width="276" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="84" id="ud7-kn-DX9"/>
@@ -157,6 +157,9 @@
                                     <constraint firstAttribute="height" constant="23" id="Ay8-MV-vnH"/>
                                 </constraints>
                                 <state key="normal" image="save"/>
+                                <connections>
+                                    <action selector="savePokemon:" destination="9pv-A4-QxB" eventType="touchUpInside" id="0G6-j3-lFc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -220,8 +223,12 @@
                     <tabBarItem key="tabBarItem" selectedImage="first" systemItem="favorites" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="imageViewPreview" destination="Iqi-N0-VsS" id="ETa-Ee-9rz"/>
-                        <outlet property="pickerTypes" destination="y2G-7a-I8c" id="MiG-yJ-r6n"/>
                         <outlet property="tableViewDataToBeInserted" destination="ibZ-kG-2fR" id="S29-TV-9Pg"/>
+                        <outlet property="txtDesc" destination="P7G-Ip-BNh" id="1AX-ah-JmX"/>
+                        <outlet property="txtForca" destination="aYv-8b-qRl" id="vMv-1K-Qhy"/>
+                        <outlet property="txtHP" destination="thy-Bz-dRq" id="U6D-iW-8ik"/>
+                        <outlet property="txtNome" destination="pXO-10-cy2" id="v2n-3s-rVj"/>
+                        <outlet property="txtXP" destination="SG9-8d-Sif" id="y5g-VB-WhC"/>
                         <outlet property="typePicker" destination="y2G-7a-I8c" id="JrM-9H-yVr"/>
                     </connections>
                 </viewController>

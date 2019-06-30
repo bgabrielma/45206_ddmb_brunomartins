@@ -28,6 +28,7 @@ final class AppUtils: NSObject {
         view.tabBarController?.tabBar.barTintColor = barTintColor
         view.tabBarController?.tabBar.tintColor = tintColor
         view.tabBarController?.tabBar.unselectedItemTintColor = unSelectedItemColor
+        view.tabBarItem.badgeValue = String(self.pokemons.count)
     }
     static func updateSearchBadgeValue(view: UIViewController, value: String?) {
         if let tabItems = view.tabBarController?.tabBar.items {
@@ -43,5 +44,17 @@ final class AppUtils: NSObject {
             }
         }
         return pokemon
+    }
+    static func showAlert(view: UIViewController, title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: "\n\(message)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        view.present(alert, animated: true)
+    }
+    // To custom events
+    static func createAlert(title: String, message: String) -> UIAlertController{
+        let alert = UIAlertController(title: title, message: "\n\(message)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        return alert
     }
 }

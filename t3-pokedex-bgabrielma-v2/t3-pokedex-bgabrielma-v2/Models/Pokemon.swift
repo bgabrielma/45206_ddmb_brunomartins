@@ -6,9 +6,8 @@
 //  Copyright © 2019 Bruno Martins. All rights reserved.
 //
 
-import Foundation
-
-class Pokemon {
+import UIKit
+class Pokemon:NSObject {
     
     /**
      
@@ -25,7 +24,7 @@ class Pokemon {
     private var _subType:EnumType
     private var _strengh:Int
     private var _evolutions:[Pokemon]
-    private var _pathImage:String
+    private var _image:UIImage
     private var _id:Int
     
     /* Counter */
@@ -34,7 +33,7 @@ class Pokemon {
     // With evolutions
     public init(_nome: String, _xp:Int, _hp:Int, _description:String,
                 _attacks:[Attack], _type:EnumType, _subType:EnumType,
-                _strengh:Int, _evolutions:[Pokemon], _pathImage:String) {
+                _strengh:Int, _evolutions:[Pokemon], _image:UIImage) {
         
         self._nome = _nome
         self._xp = _xp
@@ -45,7 +44,7 @@ class Pokemon {
         self._subType = _subType
         self._strengh = _strengh
         self._evolutions = _evolutions
-        self._pathImage = _pathImage
+        self._image = _image
         
         Pokemon._count += 1
         
@@ -56,7 +55,7 @@ class Pokemon {
     //Without evolutions
     public init(_nome: String, _xp:Int, _hp:Int, _description:String,
                 _attacks:[Attack], _type:EnumType, _subType:EnumType,
-                _strengh:Int, _pathImage:String) {
+                _strengh:Int, _image:UIImage) {
         
         self._nome = _nome
         self._xp = _xp
@@ -66,7 +65,7 @@ class Pokemon {
         self._type = _type
         self._subType = _subType
         self._strengh = _strengh
-        self._pathImage = _pathImage
+        self._image = _image
         
         self._evolutions = []
         Pokemon._count += 1
@@ -100,7 +99,7 @@ class Pokemon {
         get { return self._hp }
         set { self._hp = newValue }
     }
-    public var description:String
+    public var Description:String
     {
         get { return self._description }
         set { self._description = newValue }
@@ -130,10 +129,10 @@ class Pokemon {
         get { return self._evolutions }
         set { self._evolutions = newValue }
     }
-    public var pathImage:String
+    public var image:UIImage
     {
-        get { return self._pathImage }
-        set { self._pathImage = newValue }
+        get { return self._image }
+        set { self._image = newValue }
     }
     public var id:Int {
         get { return self._id }

@@ -13,7 +13,7 @@ final class AppUtils: NSObject {
     // return mechanism of types pokemon
     
     public static var typesRelation = [Attack]()
-    public static var pokemons = [Pokemon]()
+    public static var pokemons = [Pokemon]() 
     public static var primaryColor = UIColor.orange
     
     static func configureNavigation(view: SecondViewController, navTitle: String?, barTint: UIColor, color: UIColor, barStyle: UIBarStyle) {
@@ -28,7 +28,7 @@ final class AppUtils: NSObject {
         view.tabBarController?.tabBar.barTintColor = barTintColor
         view.tabBarController?.tabBar.tintColor = tintColor
         view.tabBarController?.tabBar.unselectedItemTintColor = unSelectedItemColor
-        view.tabBarItem.badgeValue = String(self.pokemons.count)
+        updateSearchBadgeValue(view: view, value: String(pokemons.count))
     }
     static func updateSearchBadgeValue(view: UIViewController, value: String?) {
         if let tabItems = view.tabBarController?.tabBar.items {

@@ -54,9 +54,6 @@ class SecondViewController: UIViewController, UISearchControllerDelegate {
         configTabBar()
         configNavigation()
         setupSearchBar();
-        
-        print("O meu valor atual em viewDidLoad: \(cells.count)")
-        print("O meu valor atual em viewDidLoad diretamente pela utils: \(AppUtils.pokemons.count)")
     }
     
     func configTabBar() {
@@ -102,6 +99,9 @@ extension SecondViewController: UICollectionViewDataSource {
         cell.lblName.backgroundColor = AppUtils.primaryColor
         cell.imgCell.image = filterCells[indexPath.row].image
         
+        // set pokemon reference by give an id
+        cell.pokemonId = filterCells[indexPath.row].id
+        
         return cell
     }
     
@@ -111,8 +111,6 @@ extension SecondViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        print("O meu valor atual em numberOfItemsInSection: \(cells.count)")
         return filterCells.count
     }
     

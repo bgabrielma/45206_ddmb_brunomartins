@@ -43,6 +43,9 @@ class SecondViewController: UIViewController, UISearchControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         // Do any additional setup after loading the view.
         
         // Get all pokemons

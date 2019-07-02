@@ -64,6 +64,9 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         // load some props
         
         //prevent unwrapping issues

@@ -12,6 +12,7 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var tableViewDataToBeInserted: UITableView!
     @IBOutlet weak var typePicker: UIPickerView!
     @IBOutlet weak var imageViewPreview: UIImageView!
+    @IBOutlet weak var perfomBtnSavePokemon: UIButton!
     var imagePicker = UIImagePickerController()
     
     // Picker data for type and sub type
@@ -34,6 +35,12 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var txtForca: UITextField!
     @IBOutlet weak var txtDesc: UITextField!
     
+    //View mode by cell and relation pokemon id
+    var mode:PokemonCellType = .Insert // by default
+    var idPokemonReceivedFromCell:Int?
+    
+    
+    
     var arrayComponents:[UITextField] = []
     
     // Table attacks and evolutions information data props
@@ -43,16 +50,19 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate {
             
             // reset
             self.willInsertAttack = false
-            self.attackNameTyped = ""
+            self.attackNameTyped = "Normal"
             
             // Reload data after this process being complete -> the dialog
             self.tableViewDataToBeInserted.reloadData()
         }
-        willSet {
-            
+    }
+    var evolutionsToBeInserted = [Pokemon]() {
+        didSet {
+            self.willInsertAttack = false
+            self.pokemonEvolutionNameChosen = ""
+            self.tableViewDataToBeInserted.reloadData()
         }
     }
-    var evolutionsToBeInserted:[Pokemon]?
     var headers:[String] = ["Ataques inseridos", "Evoluções inseridas"]
     
     /**
@@ -64,11 +74,23 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set keyboard type
+        self.txtHP.keyboardType = .numberPad
+        self.txtXP.keyboardType = .numberPad
+        self.txtForca.keyboardType = .numberPad
+        
+        //prevent unwrapping issues
+        self.pokemonType = .NORMAL
+        self.pokemonSubType = .NORMAL
+        
+        if(self.mode == .Edit) {
+            self.loadDataFromPokemon()
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         // load some props
-        
         //prevent unwrapping issues
         self.pokemonType = .NORMAL
         self.pokemonSubType = .NORMAL
@@ -77,6 +99,8 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate {
         
         AppUtils.configureTabBar(view: self, badgeColor: UIColor.white, barTintColor: AppUtils.primaryColor, tintColor: UIColor.white, unSelectedItemColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.6))
     }
+    
+    
 }
 
 extension FirstViewController: UIImagePickerControllerDelegate {
@@ -92,12 +116,12 @@ extension FirstViewController: UIImagePickerControllerDelegate {
 }
 
 // Pickers
-
 extension FirstViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView.tag {
             case EnumTags.InputFormPickerAttacks.rawValue: self.attackNameTyped = self.pickerData[component][row].rawValue
-            default:
+            case EnumTags.InputFormPickerEvolutions.rawValue: self.pokemonEvolutionNameChosen = AppUtils.pokemons[row].nome
+            case EnumTags.InputFormPickerTypeSubType.rawValue:
                 do {
                     // Type and subtype picker
                     if(component == 0) {
@@ -107,10 +131,10 @@ extension FirstViewController: UIPickerViewDelegate {
                         self.pokemonSubType = self.pickerData[component][row]
                     }
                 }
+            default: break
         }
-        
+        print(self.pokemonEvolutionNameChosen ?? "nil")
         print("\(self.pokemonType!) e \(self.pokemonSubType!)")
-        
     }
 }
 
@@ -119,8 +143,10 @@ extension FirstViewController: UIPickerViewDataSource {
         var count = 0
         switch pickerView.tag {
             case EnumTags.InputFormPickerAttacks.rawValue: count = 1
+            case EnumTags.InputFormPickerEvolutions.rawValue: count = 1
             default: count = pickerData.count
         }
+        
         return count
     }
     
@@ -128,6 +154,7 @@ extension FirstViewController: UIPickerViewDataSource {
         var count = 0
         switch pickerView.tag {
             case EnumTags.InputFormPickerAttacks.rawValue: count = pickerAttackType.count
+            case EnumTags.InputFormPickerEvolutions.rawValue: count = AppUtils.pokemons.count
             default: count = pickerData[component].count
         }
         return count
@@ -138,7 +165,9 @@ extension FirstViewController: UIPickerViewDataSource {
         var value:String?
         switch pickerView.tag {
             case EnumTags.InputFormPickerAttacks.rawValue: value = pickerAttackType[row].rawValue
-            default: value = pickerData[component][row].rawValue
+            case EnumTags.InputFormPickerEvolutions.rawValue: value = AppUtils.pokemons[row].nome
+            case EnumTags.InputFormPickerTypeSubType.rawValue: value = pickerData[component][row].rawValue
+            default: break
         }
         return value!
     }
@@ -153,7 +182,7 @@ extension FirstViewController: UITableViewDataSource {
             case 0:
                 numberOfRows = self.attacksToBeInserted.count
             case 1:
-                numberOfRows = self.evolutionsToBeInserted?.count ?? 0
+                numberOfRows = self.evolutionsToBeInserted.count
             default:
                 numberOfRows = 0
         }
@@ -171,7 +200,7 @@ extension FirstViewController: UITableViewDataSource {
             case 0:
                 cell.textLabel?.text = "\(self.attacksToBeInserted[indexPath.row].designation) - \(self.attacksToBeInserted[indexPath.row].type.rawValue)"
             case 1:
-                cell.textLabel?.text = self.evolutionsToBeInserted?[indexPath.row].nome ?? ""
+                cell.textLabel?.text = self.evolutionsToBeInserted[indexPath.row].nome
             default:
                 cell.textLabel?.text = ""
         }
@@ -209,8 +238,8 @@ extension FirstViewController {
             }
         default:
             do {
-                title = "Adicionar evoluções"
                 pickerFrame.tag = EnumTags.InputFormPickerEvolutions.rawValue
+                title = "Adicionar evoluções"
                 self.willInsertAttack = false
             }
         }
@@ -221,18 +250,25 @@ extension FirstViewController {
         pickerFrame.delegate = self
         pickerFrame.dataSource = self
         
+        typePicker.reloadAllComponents()
+        
         alert.view.addSubview(pickerFrame)
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) {alertAction -> Void in
             // reset
             self.willInsertAttack = false
-            self.attackNameTyped = ""
+            self.attackNameTyped = "Normal"
+            self.pokemonEvolutionNameChosen = ""
         })
         alert.addAction(UIAlertAction(title: "Ok", style: .default) { (alertAction) -> Void in
-            
             if(self.willInsertAttack) {
                 let txt = (alert.textFields?[0])?.text ?? "not defined"
                 self.attacksToBeInserted.append(Attack(designation: txt, type: EnumType(rawValue: self.attackNameTyped ?? "Normal")!))
+            } else {
+                // Evolutions picker
+                print("Nome recebido: \(self.pokemonEvolutionNameChosen!)")
+                
+                self.evolutionsToBeInserted.append(AppUtils.findPokemonByName(name: self.pokemonEvolutionNameChosen ?? AppUtils.pokemons[0].nome)!)
             }
         })
         self.present(alert, animated: true, completion: nil)
@@ -266,15 +302,32 @@ extension FirstViewController {
             AppUtils.showAlert(view: self, title: "Erro na submissão", message: "Insira, pelo menos, um ataque para o pokemon \(self.txtNome.text!)")
             return
         }
-        AppUtils.pokemons.append(
-            Pokemon(_nome: self.txtNome.text!, _xp: Int(self.txtXP.text!)!,
-                    _hp: Int(self.txtHP.text!)!,
-                    _description: self.txtDesc.text!,
-                    _attacks: self.attacksToBeInserted,
-                    _type: self.pokemonType!,
-                    _subType: self.pokemonSubType!,
-                    _strengh: Int(self.txtForca.text!)!,
-                    _image: self.imageViewPreview.image!))
+        
+        if(self.mode == .Insert) {
+            AppUtils.pokemons.append(
+                Pokemon(_nome: self.txtNome.text!, _xp: Int(self.txtXP.text!)!,
+                        _hp: Int(self.txtHP.text!)!,
+                        _description: self.txtDesc.text!,
+                        _attacks: self.attacksToBeInserted,
+                        _type: self.pokemonType!,
+                        _subType: self.pokemonSubType!,
+                        _strengh: Int(self.txtForca.text!)!,
+                        _image: self.imageViewPreview.image!))
+        } else {
+            // Edit mode
+            let index = AppUtils.pokemons.firstIndex(of: AppUtils.findPokemonById(id: self.idPokemonReceivedFromCell!)!)!
+ 
+            
+            // update
+            AppUtils.pokemons[index] = Pokemon(_nome: self.txtNome.text!, _xp: Int(self.txtXP.text!)!,
+                                               _hp: Int(self.txtHP.text!)!,
+                                               _description: self.txtDesc.text!,
+                                               _attacks: self.attacksToBeInserted,
+                                               _type: self.pokemonType!,
+                                               _subType: self.pokemonSubType!,
+                                               _strengh: Int(self.txtForca.text!)!,
+                                               _image: self.imageViewPreview.image!)
+        }
         
         let successAlert = AppUtils.createAlert(title: "Submissão de dados", message: "Submissão de dados realizada com sucesso.")
         self.present(successAlert, animated: true){
@@ -283,7 +336,7 @@ extension FirstViewController {
                 elem.text = ""
             }
             self.attacksToBeInserted.removeAll()
-            self.evolutionsToBeInserted?.removeAll()
+            self.evolutionsToBeInserted.removeAll()
             self.imageViewPreview.image = UIImage(named: "preview")
             self.pokemonType = .NORMAL
             self.pokemonSubType = .NORMAL
@@ -291,5 +344,27 @@ extension FirstViewController {
             self.typePicker.selectRow(0, inComponent: 0, animated: true)
             self.typePicker.selectRow(0, inComponent: 1, animated: true)
         }
+    }
+    
+    func loadDataFromPokemon() {
+        let pokemon:Pokemon = AppUtils.findPokemonById(id: self.idPokemonReceivedFromCell!)!
+        
+        self.txtDesc.text = pokemon.Description
+        self.txtHP.text = String(pokemon.hp)
+        self.txtXP.text = String(pokemon.xp)
+        self.txtNome.text = String(pokemon.nome)
+    }
+}
+
+// TextFieldDelegate
+extension FirstViewController: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.perfomBtnSavePokemon.sendActions(for: .touchUpInside)
+        textField.resignFirstResponder()
+        return true
     }
 }

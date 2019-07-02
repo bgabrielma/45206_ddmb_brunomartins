@@ -45,6 +45,15 @@ final class AppUtils: NSObject {
         }
         return pokemon
     }
+    static func findPokemonByName(name: String) -> Pokemon? {
+        var pokemon:Pokemon?
+        pokemons.forEach { elem in
+            if elem.nome.elementsEqual(name) {
+                pokemon = elem
+            }
+        }
+        return pokemon
+    }
     static func showAlert(view: UIViewController, title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: "\n\(message)", preferredStyle: .alert)

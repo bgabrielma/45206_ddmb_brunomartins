@@ -104,7 +104,7 @@ extension SecondViewController: UICollectionViewDataSource {
         
         // set pokemon reference by give an id
         cell.pokemonId = filterCells[indexPath.row].id
-        
+        cell.mode = .Edit
         return cell
     }
     
@@ -124,13 +124,10 @@ extension SecondViewController: UICollectionViewDelegate {
         
         // let cell = collectionView.cellForItem(at: indexPath) as? PokemonCellTableViewCell
         
-        guard let detailsVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailsPokemonViewController") as? DetailsPokemonViewController else {
+        guard let detailsVC = self.storyboard?.instantiateViewController(withIdentifier: "FirstViewController") as? FirstViewController else {
             return
         }
         
-        let viewToPush:UIViewController = detailsVC 
-        
-        detailsVC.data = "Cell row index: \(indexPath.row)"
-        self.navigationController?.pushViewController(viewToPush, animated: true)
+        self.navigationController?.pushViewController(detailsVC, animated: true)
     }
 }

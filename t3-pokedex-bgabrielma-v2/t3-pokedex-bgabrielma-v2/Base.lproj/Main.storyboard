@@ -289,17 +289,30 @@
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vf-nX-0ao">
+                                                    <rect key="frame" x="44" y="0.0" width="20" height="20"/>
+                                                    <color key="backgroundColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <state key="normal" title="X">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="6DG-NI-1h1" firstAttribute="top" secondItem="ujZ-hz-hrV" secondAttribute="top" id="0nj-xd-jKS"/>
+                                            <constraint firstItem="Mcx-7x-h36" firstAttribute="top" secondItem="0vf-nX-0ao" secondAttribute="bottom" constant="49" id="3xl-PP-gSJ"/>
+                                            <constraint firstItem="0vf-nX-0ao" firstAttribute="leading" secondItem="ujZ-hz-hrV" secondAttribute="leadingMargin" constant="36" id="FgJ-cw-fjO"/>
                                             <constraint firstItem="Mcx-7x-h36" firstAttribute="top" secondItem="6DG-NI-1h1" secondAttribute="bottom" constant="8" symbolic="YES" id="MyZ-ps-ne1"/>
                                             <constraint firstAttribute="trailing" secondItem="6DG-NI-1h1" secondAttribute="trailing" id="PxK-ME-1NP"/>
+                                            <constraint firstItem="0vf-nX-0ao" firstAttribute="top" secondItem="6DG-NI-1h1" secondAttribute="top" id="bMD-Dd-MQw"/>
                                             <constraint firstItem="6DG-NI-1h1" firstAttribute="leading" secondItem="ujZ-hz-hrV" secondAttribute="leading" id="iHT-ga-NYo"/>
                                             <constraint firstAttribute="trailing" secondItem="Mcx-7x-h36" secondAttribute="trailing" id="mHA-Hw-zVu"/>
                                             <constraint firstItem="Mcx-7x-h36" firstAttribute="centerX" secondItem="ujZ-hz-hrV" secondAttribute="centerX" id="qlX-dt-lGF"/>
+                                            <constraint firstItem="0vf-nX-0ao" firstAttribute="trailing" secondItem="6DG-NI-1h1" secondAttribute="trailing" id="tP4-HH-8om"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="btnRemove" destination="0vf-nX-0ao" id="O9m-gC-yli"/>
                                             <outlet property="imgCell" destination="6DG-NI-1h1" id="Xdn-LJ-D37"/>
                                             <outlet property="lblName" destination="Mcx-7x-h36" id="2XZ-ls-2rg"/>
                                         </connections>

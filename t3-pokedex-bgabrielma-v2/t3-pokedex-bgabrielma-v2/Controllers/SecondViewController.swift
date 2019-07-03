@@ -8,19 +8,12 @@
 
 import UIKit
 
-class ExampleData {
-    var nome:String?
-    var id:String?
-    
-    init(nome: String, id: String) {
-        self.nome = nome
-        self.id = id
-    }
-}
-
 class SecondViewController: UIViewController, UISearchControllerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    // Aux props
+    public var willDeleteForId:Int = 0
     
     // Filter props
     public var cells:[Pokemon] = []
@@ -88,6 +81,21 @@ class SecondViewController: UIViewController, UISearchControllerDelegate {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
+    
+    @objc
+    func deletePokemon() {
+        let deleteAlert = AppUtils.createAlert(title: "Apagar pokemon", message: "Deseja realmente apagar este pokemon?")
+        
+        deleteAlert.addAction(UIAlertAction(title: "Sim", style: .default, handler: { (action) in
+            let index = AppUtils.pokemons.firstIndex(of: AppUtils.findPokemonById(id: self.willDeleteForId)!)
+            AppUtils.pokemons.remove(at: index!)
+        }))
+        deleteAlert.addAction(UIAlertAction(title: "Não", style: .default, handler: nil))
+        
+        self.present(deleteAlert, animated: true) {
+            self.collectionView.reloadData()
+        }
+    }
 }
 
 extension SecondViewController: UISearchBarDelegate {
@@ -113,6 +121,11 @@ extension SecondViewController: UICollectionViewDataSource {
         
         // set pokemon reference by give an id
         cell.pokemonId = filterCells[indexPath.row].id
+        
+        // Add action to delete button and link id cell into willDeleteForId
+        cell.btnRemove.addTarget(self, action: #selector(self.deletePokemon), for: .touchUpInside)
+        self.willDeleteForId = cell.pokemonId!
+        
         return cell
     }
     

@@ -13,6 +13,8 @@ class PokemonCellTableViewCell: UICollectionViewCell {
     // Cell properties
     @IBOutlet weak var imgCell: UIImageView!
     @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var btnRemove: UIButton!
+    
     var mode:PokemonCellType = .Read
     
     // Pokemon object reference

@@ -235,7 +235,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" selectedImage="first" systemItem="favorites" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="" image="add_icon_tab" landscapeImage="add_icon_tab" largeContentSizeImage="add_icon_tab" selectedImage="add_icon_tab" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="imageViewPreview" destination="Iqi-N0-VsS" id="ETa-Ee-9rz"/>
                         <outlet property="perfomBtnSavePokemon" destination="ZfP-ia-Qhi" id="UwI-Sm-hQK"/>
@@ -381,9 +381,7 @@
         <scene sceneID="ab5-EB-JP4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Idx-zz-5Ho" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" badgeValue="0" systemItem="search" id="Q8h-ym-FtG">
-                        <color key="badgeColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="" badgeValue="0" systemItem="more" id="Q8h-ym-FtG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nBJ-Eo-XW0">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -401,7 +399,7 @@
     </scenes>
     <resources>
         <image name="add" width="400" height="400"/>
-        <image name="first" width="30" height="30"/>
+        <image name="add_icon_tab" width="50" height="50"/>
         <image name="preview" width="640" height="732"/>
         <image name="save" width="60" height="60"/>
         <image name="upload" width="100" height="100"/>

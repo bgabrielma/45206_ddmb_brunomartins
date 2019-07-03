@@ -43,11 +43,17 @@ class SecondViewController: UIViewController, UISearchControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.initData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         // Do any additional setup after loading the view.
+        print("View did appear")
         
+        self.initData()
+    }
+    
+    func initData() {
         // Get all pokemons
         self.cells = AppUtils.pokemons
         
@@ -57,6 +63,9 @@ class SecondViewController: UIViewController, UISearchControllerDelegate {
         configTabBar()
         configNavigation()
         setupSearchBar();
+        
+        // For pokemons which have been updated
+        self.collectionView.reloadData()
     }
     
     func configTabBar() {
@@ -104,7 +113,6 @@ extension SecondViewController: UICollectionViewDataSource {
         
         // set pokemon reference by give an id
         cell.pokemonId = filterCells[indexPath.row].id
-        cell.mode = .Edit
         return cell
     }
     
@@ -122,11 +130,14 @@ extension SecondViewController: UICollectionViewDataSource {
 extension SecondViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        // let cell = collectionView.cellForItem(at: indexPath) as? PokemonCellTableViewCell
+        let cell = collectionView.cellForItem(at: indexPath) as? PokemonCellTableViewCell
         
         guard let detailsVC = self.storyboard?.instantiateViewController(withIdentifier: "FirstViewController") as? FirstViewController else {
             return
         }
+        // Link references
+        detailsVC.mode = .Edit
+        detailsVC.idPokemonReceivedFromCell = cell!.pokemonId!
         
         self.navigationController?.pushViewController(detailsVC, animated: true)
     }

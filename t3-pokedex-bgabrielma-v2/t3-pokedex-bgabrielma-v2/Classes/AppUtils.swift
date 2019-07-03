@@ -63,7 +63,6 @@ final class AppUtils: NSObject {
     // To custom events
     static func createAlert(title: String, message: String) -> UIAlertController{
         let alert = UIAlertController(title: title, message: "\n\(message)", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         return alert
     }
 }

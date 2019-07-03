@@ -37,17 +37,12 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate {
     
     //View mode by cell and relation pokemon id
     var mode:PokemonCellType = .Insert // by default
-    var idPokemonReceivedFromCell:Int?
-    
-    
-    
+    var idPokemonReceivedFromCell:Int = 0
     var arrayComponents:[UITextField] = []
     
     // Table attacks and evolutions information data props
     var attacksToBeInserted = [Attack]() {
         didSet {
-            print("Inserido -> \(self.attacksToBeInserted.count)")
-            
             // reset
             self.willInsertAttack = false
             self.attackNameTyped = "Normal"
@@ -86,7 +81,6 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate {
         if(self.mode == .Edit) {
             self.loadDataFromPokemon()
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -303,33 +297,38 @@ extension FirstViewController {
             return
         }
         
+        let _pokemonToBeInserted = Pokemon(_nome: self.txtNome.text!, _xp: Int(self.txtXP.text!)!,
+                                        _hp: Int(self.txtHP.text!)!,
+                                        _description: self.txtDesc.text!,
+                                        _attacks: self.attacksToBeInserted,
+                                        _type: self.pokemonType!,
+                                        _subType: self.pokemonSubType!,
+                                        _strengh: Int(self.txtForca.text!)!,
+                                        _evolutions: self.evolutionsToBeInserted.count == 0 ? [] : self.evolutionsToBeInserted,
+                                        _image: self.imageViewPreview.image!)
+        
         if(self.mode == .Insert) {
-            AppUtils.pokemons.append(
-                Pokemon(_nome: self.txtNome.text!, _xp: Int(self.txtXP.text!)!,
-                        _hp: Int(self.txtHP.text!)!,
-                        _description: self.txtDesc.text!,
-                        _attacks: self.attacksToBeInserted,
-                        _type: self.pokemonType!,
-                        _subType: self.pokemonSubType!,
-                        _strengh: Int(self.txtForca.text!)!,
-                        _image: self.imageViewPreview.image!))
+            AppUtils.pokemons.append(_pokemonToBeInserted)
         } else {
             // Edit mode
-            let index = AppUtils.pokemons.firstIndex(of: AppUtils.findPokemonById(id: self.idPokemonReceivedFromCell!)!)!
- 
+            
+            print("ID: \(self.idPokemonReceivedFromCell)")
+            let index = AppUtils.pokemons.firstIndex(of: AppUtils.findPokemonById(id: self.idPokemonReceivedFromCell)!)
             
             // update
-            AppUtils.pokemons[index] = Pokemon(_nome: self.txtNome.text!, _xp: Int(self.txtXP.text!)!,
-                                               _hp: Int(self.txtHP.text!)!,
-                                               _description: self.txtDesc.text!,
-                                               _attacks: self.attacksToBeInserted,
-                                               _type: self.pokemonType!,
-                                               _subType: self.pokemonSubType!,
-                                               _strengh: Int(self.txtForca.text!)!,
-                                               _image: self.imageViewPreview.image!)
+            AppUtils.pokemons[index!] = _pokemonToBeInserted
+            
+            let updatedAlert = AppUtils.createAlert(title: "Edição de dados", message: "Alteração dos dados realizada com sucesso.")
+            updatedAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(updatedAlert, animated: true)
+            return
         }
         
         let successAlert = AppUtils.createAlert(title: "Submissão de dados", message: "Submissão de dados realizada com sucesso.")
+        successAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        
         self.present(successAlert, animated: true){
             // Reset components
             self.arrayComponents.forEach { elem in
@@ -347,12 +346,16 @@ extension FirstViewController {
     }
     
     func loadDataFromPokemon() {
-        let pokemon:Pokemon = AppUtils.findPokemonById(id: self.idPokemonReceivedFromCell!)!
+        let pokemon:Pokemon = AppUtils.findPokemonById(id: self.idPokemonReceivedFromCell)!
         
         self.txtDesc.text = pokemon.Description
         self.txtHP.text = String(pokemon.hp)
         self.txtXP.text = String(pokemon.xp)
         self.txtNome.text = String(pokemon.nome)
+        self.txtForca.text = String(pokemon.strengh)
+        self.imageViewPreview.image = pokemon.image
+        self.attacksToBeInserted = pokemon.attacks
+        self.evolutionsToBeInserted = pokemon.evolutions
     }
 }
 

@@ -18,7 +18,6 @@
 		153EFC1622BC2C9D00DA0E5F /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EFC1522BC2C9D00DA0E5F /* Pokemon.swift */; };
 		153EFC1A22BC2D5100DA0E5F /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EFC1922BC2D5100DA0E5F /* Attack.swift */; };
 		15B00A5522C57891007E7BD1 /* EnumTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B00A5422C57891007E7BD1 /* EnumTags.swift */; };
-		15E06A1122BC39CF0057C7E3 /* DetailsPokemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E06A1022BC39CF0057C7E3 /* DetailsPokemonViewController.swift */; };
 		15FF8BAA22C0152B00870A66 /* PokemonCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FF8BA922C0152B00870A66 /* PokemonCellTableViewCell.swift */; };
 		8BC14F4222C0BCE000512C08 /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC14F4122C0BCE000512C08 /* AppUtils.swift */; };
 /* End PBXBuildFile section */
@@ -37,7 +36,6 @@
 		153EFC1522BC2C9D00DA0E5F /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		153EFC1922BC2D5100DA0E5F /* Attack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
 		15B00A5422C57891007E7BD1 /* EnumTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTags.swift; sourceTree = "<group>"; };
-		15E06A1022BC39CF0057C7E3 /* DetailsPokemonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPokemonViewController.swift; sourceTree = "<group>"; };
 		15FF8BA922C0152B00870A66 /* PokemonCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCellTableViewCell.swift; sourceTree = "<group>"; };
 		8BC14F4122C0BCE000512C08 /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,7 +98,6 @@
 			children = (
 				153EFBD322BC216D00DA0E5F /* FirstViewController.swift */,
 				153EFBD522BC216D00DA0E5F /* SecondViewController.swift */,
-				15E06A1022BC39CF0057C7E3 /* DetailsPokemonViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -199,7 +196,6 @@
 				153EFC1622BC2C9D00DA0E5F /* Pokemon.swift in Sources */,
 				153EFC1322BC2C4C00DA0E5F /* EnumType.swift in Sources */,
 				153EFBD622BC216D00DA0E5F /* SecondViewController.swift in Sources */,
-				15E06A1122BC39CF0057C7E3 /* DetailsPokemonViewController.swift in Sources */,
 				153EFBD222BC216D00DA0E5F /* AppDelegate.swift in Sources */,
 				15FF8BAA22C0152B00870A66 /* PokemonCellTableViewCell.swift in Sources */,
 				150E66F422C417A600CC4833 /* PokemonCellType.swift in Sources */,

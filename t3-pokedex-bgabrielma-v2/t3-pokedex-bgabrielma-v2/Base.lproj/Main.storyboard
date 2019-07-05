@@ -342,36 +342,6 @@
             </objects>
             <point key="canvasLocation" x="1811.25" y="427.81690140845069"/>
         </scene>
-        <!--Details Pokemon View Controller-->
-        <scene sceneID="93M-Aq-Sei">
-            <objects>
-                <viewController storyboardIdentifier="DetailsPokemonViewController" id="0bS-HW-tUx" customClass="DetailsPokemonViewController" customModule="t3_pokedex_bgabrielma_v2" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Cfy-M4-weU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ItW-os-aSM">
-                                <rect key="frame" x="139" y="283.5" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="ItW-os-aSM" firstAttribute="centerY" secondItem="FZB-QM-ApE" secondAttribute="centerY" id="8J3-py-Dv5"/>
-                            <constraint firstItem="ItW-os-aSM" firstAttribute="centerX" secondItem="FZB-QM-ApE" secondAttribute="centerX" id="G9o-WC-4Uu"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="FZB-QM-ApE"/>
-                    </view>
-                    <connections>
-                        <outlet property="lbl" destination="ItW-os-aSM" id="1Qj-7D-iYo"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TKb-Dk-Gqf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2730" y="430"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>

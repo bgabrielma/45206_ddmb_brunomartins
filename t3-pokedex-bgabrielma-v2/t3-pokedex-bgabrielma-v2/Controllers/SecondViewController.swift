@@ -83,18 +83,22 @@ class SecondViewController: UIViewController, UISearchControllerDelegate {
     }
     
     @objc
-    func deletePokemon() {
+    func deletePokemon(button: UIButton) {
         let deleteAlert = AppUtils.createAlert(title: "Apagar pokemon", message: "Deseja realmente apagar este pokemon?")
         
         deleteAlert.addAction(UIAlertAction(title: "Sim", style: .default, handler: { (action) in
-            let index = AppUtils.pokemons.firstIndex(of: AppUtils.findPokemonById(id: self.willDeleteForId)!)
+            
+            // delete, in all pokemons, possible evolutions whose pokemon is this
+            AppUtils.deleteEvolutionsLinkedBy(pokemonId: button.tag)
+            
+            let index = AppUtils.pokemons.firstIndex(of: AppUtils.findPokemonById(id: button.tag)!)
             AppUtils.pokemons.remove(at: index!)
         }))
         deleteAlert.addAction(UIAlertAction(title: "Não", style: .default, handler: nil))
         
-        self.present(deleteAlert, animated: true) {
-            self.collectionView.reloadData()
-        }
+        self.present(deleteAlert, animated: true, completion: nil)
+        
+        self.initData()
     }
 }
 
@@ -123,8 +127,9 @@ extension SecondViewController: UICollectionViewDataSource {
         cell.pokemonId = filterCells[indexPath.row].id
         
         // Add action to delete button and link id cell into willDeleteForId
-        cell.btnRemove.addTarget(self, action: #selector(self.deletePokemon), for: .touchUpInside)
-        self.willDeleteForId = cell.pokemonId!
+        // we'll use tag button to save/store the id
+        cell.btnRemove.tag = cell.pokemonId!
+        cell.btnRemove.addTarget(self, action: #selector(self.deletePokemon(button:)), for: .touchUpInside)
         
         return cell
     }

@@ -39,6 +39,7 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate {
     var mode:PokemonCellType = .Insert // by default
     var idPokemonReceivedFromCell:Int = 0
     var arrayComponents:[UITextField] = []
+    var filterEvolutionsPokemon:[Pokemon] = []
     
     // Table attacks and evolutions information data props
     var attacksToBeInserted = [Attack]() {
@@ -84,10 +85,15 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         // load some props
         //prevent unwrapping issues
-        self.pokemonType = .NORMAL
-        self.pokemonSubType = .NORMAL
+        
+        // PS: Image picker dialog trigger this function
+            // prevent to image picker dialog trigger
+        
+        self.pokemonType = (self.pokemonType == nil) ? .NORMAL : self.pokemonType
+        self.pokemonSubType = (self.pokemonSubType == nil) ? .NORMAL : self.pokemonSubType
         
         self.arrayComponents = [self.txtNome ,self.txtXP, self.txtHP, self.txtForca, self.txtDesc]
         
@@ -114,21 +120,20 @@ extension FirstViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView.tag {
             case EnumTags.InputFormPickerAttacks.rawValue: self.attackNameTyped = self.pickerData[component][row].rawValue
-            case EnumTags.InputFormPickerEvolutions.rawValue: self.pokemonEvolutionNameChosen = AppUtils.pokemons[row].nome
+            case EnumTags.InputFormPickerEvolutions.rawValue: self.pokemonEvolutionNameChosen = filterEvolutionsPokemon[row].nome
             case EnumTags.InputFormPickerTypeSubType.rawValue:
                 do {
                     // Type and subtype picker
                     if(component == 0) {
                         self.pokemonType = self.pickerData[component][row]
-                    }
-                    else {
+                    } else {
+                        // SubType
                         self.pokemonSubType = self.pickerData[component][row]
                     }
                 }
             default: break
         }
         print(self.pokemonEvolutionNameChosen ?? "nil")
-        print("\(self.pokemonType!) e \(self.pokemonSubType!)")
     }
 }
 
@@ -148,7 +153,7 @@ extension FirstViewController: UIPickerViewDataSource {
         var count = 0
         switch pickerView.tag {
             case EnumTags.InputFormPickerAttacks.rawValue: count = pickerAttackType.count
-            case EnumTags.InputFormPickerEvolutions.rawValue: count = AppUtils.pokemons.count
+            case EnumTags.InputFormPickerEvolutions.rawValue: count = filterEvolutionsPokemon.count
             default: count = pickerData[component].count
         }
         return count
@@ -159,7 +164,7 @@ extension FirstViewController: UIPickerViewDataSource {
         var value:String?
         switch pickerView.tag {
             case EnumTags.InputFormPickerAttacks.rawValue: value = pickerAttackType[row].rawValue
-            case EnumTags.InputFormPickerEvolutions.rawValue: value = AppUtils.pokemons[row].nome
+            case EnumTags.InputFormPickerEvolutions.rawValue: value = filterEvolutionsPokemon[row].nome
             case EnumTags.InputFormPickerTypeSubType.rawValue: value = pickerData[component][row].rawValue
             default: break
         }
@@ -233,6 +238,11 @@ extension FirstViewController {
         default:
             do {
                 pickerFrame.tag = EnumTags.InputFormPickerEvolutions.rawValue
+                
+                // Filter evolutions
+                // Prevent pokemon to have an self evolution. Example: Pichu can not evolve to pichu
+                self.filterEvolutionsPokemon = AppUtils.pokemons.filter {elem in elem.id != self.idPokemonReceivedFromCell }
+                
                 title = "Adicionar evoluções"
                 self.willInsertAttack = false
             }
@@ -245,7 +255,6 @@ extension FirstViewController {
         pickerFrame.dataSource = self
         
         typePicker.reloadAllComponents()
-        
         alert.view.addSubview(pickerFrame)
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) {alertAction -> Void in
@@ -258,11 +267,23 @@ extension FirstViewController {
             if(self.willInsertAttack) {
                 let txt = (alert.textFields?[0])?.text ?? "not defined"
                 self.attacksToBeInserted.append(Attack(designation: txt, type: EnumType(rawValue: self.attackNameTyped ?? "Normal")!))
-            } else {
+            } else if(!self.filterEvolutionsPokemon.isEmpty){
+                
+                // Select the first value of picker to prevent nil values
+                if(self.pokemonEvolutionNameChosen!.isEmpty) {
+                    self.pokemonEvolutionNameChosen = self.filterEvolutionsPokemon[0].nome
+                }
+                
                 // Evolutions picker
                 print("Nome recebido: \(self.pokemonEvolutionNameChosen!)")
                 
-                self.evolutionsToBeInserted.append(AppUtils.findPokemonByName(name: self.pokemonEvolutionNameChosen ?? AppUtils.pokemons[0].nome)!)
+                let evolution = AppUtils.findPokemonByName(name: self.pokemonEvolutionNameChosen!)!
+                
+                if(!self.evolutionsToBeInserted.contains(evolution)) {
+                    self.evolutionsToBeInserted.append(evolution)
+                } else {
+                    AppUtils.showAlert(view: self, title: "Erro ao adicionar a evolução", message: "O pokemon \(self.txtNome.text!) já tem esta evolução registada")
+                }
             }
         })
         self.present(alert, animated: true, completion: nil)
@@ -356,6 +377,13 @@ extension FirstViewController {
         self.imageViewPreview.image = pokemon.image
         self.attacksToBeInserted = pokemon.attacks
         self.evolutionsToBeInserted = pokemon.evolutions
+        
+        // init aux
+        self.pokemonType = pokemon.type
+        self.pokemonSubType = pokemon.subType
+        
+        self.typePicker.selectRow(EnumType.allCases.firstIndex(of: pokemon.type)!, inComponent: 0, animated: true)
+        self.typePicker.selectRow(EnumType.allCases.firstIndex(of: pokemon.subType)!, inComponent: 1, animated: true)
     }
 }
 

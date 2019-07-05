@@ -16,14 +16,39 @@ final class AppUtils: NSObject {
     public static var pokemons = [Pokemon]() 
     public static var primaryColor = UIColor.orange
     
+    
+    /**
+     Um dicionario com duas propriedades
+     - tipo eficaz contra: [array de tipos vulneráveis a tal tipo]
+    */
+    
+    public static var typeAttackSystem:[EnumType: [EnumType]] = [
+        .NORMAL: [],
+        .FIRE: [.GRASS, .ICE, .BUG, .STEEL],
+        .WATER: [.FIRE, .GROUND, .ROCK],
+        .ELETRIC: [.WATER, .FLYING],
+        .GRASS: [.WATER, .GROUND, .ROCK],
+        .ICE: [.GRASS, .GROUND, .FLYING, .DRAGON],
+        .FIGHTING: [.NORMAL, .ICE, .ROCK, .DARK, .STEEL],
+        .POISON: [.GRASS, .FAIRY],
+        .GROUND: [.FIRE, .ELETRIC, .POISON, .ROCK, .STEEL],
+        .FLYING: [.GRASS, .FIGHTING, .BUG],
+        .PSYCHIC: [.FIGHTING, .POISON],
+        .BUG: [.GRASS, .PSYCHIC, .DARK],
+        .ROCK: [.FIRE, .ICE, .FLYING, .BUG],
+        .GHOST: [.PSYCHIC, .GHOST],
+        .DRAGON: [.GHOST],
+        .DARK: [.PSYCHIC, .GHOST],
+        .STEEL: [.ICE, .ROCK, .FAIRY],
+        .FAIRY: [.FIGHTING, .GHOST, .DRAGON]
+    ]
+    
     static func configureNavigation(view: SecondViewController, navTitle: String?, barTint: UIColor, color: UIColor, barStyle: UIBarStyle) {
-        
         view.navigationItem.title = navTitle ?? "undefined"
         view.navigationController?.navigationBar.barTintColor = barTint
         view.navigationController?.navigationBar.barStyle = barStyle
     }
     static func configureTabBar(view: UIViewController, badgeColor: UIColor, barTintColor: UIColor, tintColor: UIColor, unSelectedItemColor: UIColor) {
-        
         view.tabBarController?.tabBar.isTranslucent = false
         view.tabBarController?.tabBar.barTintColor = barTintColor
         view.tabBarController?.tabBar.tintColor = tintColor
@@ -54,6 +79,15 @@ final class AppUtils: NSObject {
         }
         return pokemon
     }
+    static func deleteEvolutionsLinkedBy(pokemonId: Int) {
+        self.pokemons.forEach { pokemon in
+            for x in 0..<pokemon.evolutions.count {
+                if(pokemon.evolutions[x].id == pokemonId) {
+                    pokemon.evolutions.remove(at: x)
+                }
+            }
+        }
+    }
     static func showAlert(view: UIViewController, title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: "\n\(message)", preferredStyle: .alert)
@@ -64,5 +98,15 @@ final class AppUtils: NSObject {
     static func createAlert(title: String, message: String) -> UIAlertController{
         let alert = UIAlertController(title: title, message: "\n\(message)", preferredStyle: .alert)
         return alert
+    }
+    // Type attack relation system
+    static func checkTypeOneIsBetterThan(typeOne: EnumType, typeTwo: EnumType) -> Bool {
+        var isBetter:Bool = false
+        self.typeAttackSystem[typeOne]?.forEach { elem in
+            if elem == typeTwo {
+                isBetter = true
+            }
+        }
+        return isBetter
     }
 }

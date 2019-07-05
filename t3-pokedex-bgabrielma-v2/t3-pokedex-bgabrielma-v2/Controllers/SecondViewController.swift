@@ -12,9 +12,6 @@ class SecondViewController: UIViewController, UISearchControllerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    // Aux props
-    public var willDeleteForId:Int = 0
-    
     // Filter props
     public var cells:[Pokemon] = []
     public var filterCells:[Pokemon] = [] {
@@ -36,13 +33,9 @@ class SecondViewController: UIViewController, UISearchControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.initData()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        // Do any additional setup after loading the view.
-        print("View did appear")
-        
+    override func viewWillAppear(_ animated: Bool) {
         self.initData()
     }
     
@@ -93,12 +86,13 @@ class SecondViewController: UIViewController, UISearchControllerDelegate {
             
             let index = AppUtils.pokemons.firstIndex(of: AppUtils.findPokemonById(id: button.tag)!)
             AppUtils.pokemons.remove(at: index!)
+            
         }))
         deleteAlert.addAction(UIAlertAction(title: "Não", style: .default, handler: nil))
         
-        self.present(deleteAlert, animated: true, completion: nil)
-        
-        self.initData()
+        self.present(deleteAlert, animated: true) {
+            self.tabBarController!.selectedIndex = 0
+        }
     }
 }
 
@@ -125,9 +119,6 @@ extension SecondViewController: UICollectionViewDataSource {
         
         // set pokemon reference by give an id
         cell.pokemonId = filterCells[indexPath.row].id
-        
-        // Add action to delete button and link id cell into willDeleteForId
-        // we'll use tag button to save/store the id
         cell.btnRemove.tag = cell.pokemonId!
         cell.btnRemove.addTarget(self, action: #selector(self.deletePokemon(button:)), for: .touchUpInside)
         
@@ -156,7 +147,7 @@ extension SecondViewController: UICollectionViewDelegate {
         // Link references
         detailsVC.mode = .Edit
         detailsVC.idPokemonReceivedFromCell = cell!.pokemonId!
-        
+
         self.navigationController?.pushViewController(detailsVC, animated: true)
     }
 }

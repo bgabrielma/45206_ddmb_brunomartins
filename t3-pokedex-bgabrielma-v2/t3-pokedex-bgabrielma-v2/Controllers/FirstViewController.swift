@@ -84,7 +84,7 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         // load some props
         //prevent unwrapping issues
@@ -99,8 +99,6 @@ class FirstViewController: UIViewController, UINavigationControllerDelegate {
         
         AppUtils.configureTabBar(view: self, badgeColor: UIColor.white, barTintColor: AppUtils.primaryColor, tintColor: UIColor.white, unSelectedItemColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.6))
     }
-    
-    
 }
 
 extension FirstViewController: UIImagePickerControllerDelegate {

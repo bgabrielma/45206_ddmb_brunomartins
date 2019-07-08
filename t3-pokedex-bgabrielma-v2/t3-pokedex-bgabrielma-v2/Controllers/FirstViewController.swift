@@ -215,10 +215,8 @@ extension FirstViewController: UITableViewDataSource {
         if editingStyle == UITableViewCell.EditingStyle.delete {
             if indexPath.section == 0{
                 self.attacksToBeInserted.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .automatic)
             } else {
                 self.evolutionsToBeInserted.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .automatic)
             }
         }
     }
@@ -326,13 +324,13 @@ extension FirstViewController {
             return
         }
         
-        let _pokemonToBeInserted = Pokemon(_nome: self.txtNome.text!, _xp: Int(self.txtXP.text!)!,
-                                        _hp: Int(self.txtHP.text!)!,
+        let _pokemonToBeInserted = Pokemon(_nome: self.txtNome.text!, _xp: Int(self.txtXP.text!) ?? 0,
+                                        _hp: Int(self.txtHP.text!) ?? 0,
                                         _description: self.txtDesc.text!,
                                         _attacks: self.attacksToBeInserted,
                                         _type: self.pokemonType!,
                                         _subType: self.pokemonSubType!,
-                                        _strengh: Int(self.txtForca.text!)!,
+                                        _strengh: Int(self.txtForca.text!) ?? 0,
                                         _evolutions: self.evolutionsToBeInserted.count == 0 ? [] : self.evolutionsToBeInserted,
                                         _image: self.imageViewPreview.image!)
         

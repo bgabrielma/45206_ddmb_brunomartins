@@ -113,7 +113,7 @@ extension FirstViewController: UIImagePickerControllerDelegate {
     }
 }
 
-// Pickers
+// Picker
 extension FirstViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView.tag {
@@ -211,8 +211,18 @@ extension FirstViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.headers[section]
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            if indexPath.section == 0{
+                self.attacksToBeInserted.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            } else {
+                self.evolutionsToBeInserted.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        }
+    }
 }
-
 
 // First View Controller actions
 extension FirstViewController {
